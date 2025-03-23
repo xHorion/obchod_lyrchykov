@@ -44,33 +44,7 @@ https://templatemo.com/tm-589-lugx-gaming
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="" style="width: 158px;">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="shop.html">Our Shop</a></li>
-                      <li><a href="product-details.html">Product Details</a></li>
-                      <li><a href="contact.html" class="active">Contact Us</a></li>
-                      <li><a href="#">Sign In</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
+  <?php include_once "parts/header.php" ?>
   <!-- ***** Header Area End ***** -->
 
   <div class="page-heading header-text">
@@ -150,15 +124,9 @@ https://templatemo.com/tm-589-lugx-gaming
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
-      </div>
-    </div>
-  </footer>
+  <?php include_once "parts/footer.php" ?>
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->

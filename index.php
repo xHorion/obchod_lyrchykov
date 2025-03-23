@@ -44,33 +44,7 @@ https://templatemo.com/tm-589-lugx-gaming
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="" style="width: 158px;">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="shop.html">Our Shop</a></li>
-                      <li><a href="product-details.html">Product Details</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
-                      <li><a href="#">Sign In</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
+  <?php include_once "parts/header.php" ?>
   <!-- ***** Header Area End ***** -->
 
   <div class="main-banner">
@@ -157,58 +131,58 @@ https://templatemo.com/tm-589-lugx-gaming
         </div>
         <div class="col-lg-6">
           <div class="main-button">
-            <a href="shop.html">Ukazať všetko</a>
+            <a href="shop.php">Ukazať všetko</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
               <span class="price"><em>$28</em>$20</span>
             </div>
             <div class="down-content">
               <span class="category"></span>
               <h4>Akcia</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+              <a href="product-details.php"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Kunkka_icon.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Kunkka_icon.webp" alt=""></a>
               <span class="price">$44</span>
             </div>
             <div class="down-content">
               <span class="category"></span>
               <h4>Akcia</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+              <a href="product-details.php"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
               <span class="price"><em>$64</em>$44</span>
             </div>
             <div class="down-content">
               <span class="category"></span>
               <h4>Akcia</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+              <a href="product-details.php"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
               <span class="price">$32</span>
             </div>
             <div class="down-content">
               <span class="category"></span>
               <h4>Akcia</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+              <a href="product-details.php"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
@@ -227,72 +201,72 @@ https://templatemo.com/tm-589-lugx-gaming
         </div>
         <div class="col-lg-6">
           <div class="main-button">
-            <a href="shop.html">Ukazať všetko</a>
+            <a href="shop.php">Ukazať všetko</a>
           </div>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/300.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/300.webp" alt=""></a>
             </div>
             <div class="down-content">
                 <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/f094c527d433098738e4c3c25522b.png" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
+                <a href="product-details.php">Otvoriť</a>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/wallpaper1_large.jpg" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/f094c527d433098738e4c3c25522b.png" alt=""></a>
             </div>
             <div class="down-content">
                 <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
+                <a href="product-details.php">Otvoriť</a>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/a242364a648eba295b07cf6770350.jpeg" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/wallpaper1_large.jpg" alt=""></a>
             </div>
             <div class="down-content">
                 <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
+                <a href="product-details.php">Otvoriť</a>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/dota_item_tales_of_the_ardalan_interdictor_png.png" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/a242364a648eba295b07cf6770350.jpeg" alt=""></a>
             </div>
             <div class="down-content">
                 <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
+                <a href="product-details.php">Otvoriť</a>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="item">
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Benevolent_Companion.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/dota_item_tales_of_the_ardalan_interdictor_png.png" alt=""></a>
             </div>
             <div class="down-content">
                 <span class="category">Akcia</span>
-                <a href="product-details.html">Otvoriť</a>
+                <a href="product-details.php">Otvoriť</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Benevolent_Companion.webp" alt=""></a>
+            </div>
+            <div class="down-content">
+                <span class="category">Akcia</span>
+                <a href="product-details.php">Otvoriť</a>
             </div>
           </div>
         </div>
@@ -313,7 +287,7 @@ https://templatemo.com/tm-589-lugx-gaming
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/a242364a648eba295b07cf6770350.jpeg" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/a242364a648eba295b07cf6770350.jpeg" alt=""></a>
             </div>
           </div>
         </div>
@@ -321,7 +295,7 @@ https://templatemo.com/tm-589-lugx-gaming
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -329,7 +303,7 @@ https://templatemo.com/tm-589-lugx-gaming
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -337,7 +311,7 @@ https://templatemo.com/tm-589-lugx-gaming
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/capsule_616x353.jpg" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/capsule_616x353.jpg" alt=""></a>
             </div>
           </div>
         </div>
@@ -345,7 +319,7 @@ https://templatemo.com/tm-589-lugx-gaming
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -365,7 +339,7 @@ https://templatemo.com/tm-589-lugx-gaming
                   <h2>Uskutočnite svoj prvý nákup a <em>získajte bonusy</em></h2>
                 </div>
                 <div class="main-button">
-                  <a href="shop.html">Kupite teraz</a>
+                  <a href="shop.php">Kupite teraz</a>
                 </div>
               </div>
             </div>
@@ -393,13 +367,7 @@ https://templatemo.com/tm-589-lugx-gaming
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
-      </div>
-    </div>
-  </footer>
+  <?php include_once "parts/footer.php" ?>
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
