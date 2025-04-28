@@ -1,0 +1,30 @@
+.accordion-wrapper {
+    max-width: 800px;
+    margin: 30px auto 0 auto;
+    padding: 0 20px;
+}
+
+
+.accordion-item:first-child {
+    margin-top: 60px;
+}
+
+.accordion-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0056b3;
+    color: white;
+}
+
+.accordion-body {
+    background-color: #e7f1ff;
+}
+
+.accordion-item {
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    overflow: hidden;
+}
