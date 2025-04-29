@@ -33,10 +33,6 @@
     </div>
 </div>
 
-<style>
-
-</style>
-
 <div class="accordion accordion-flush" id="accordionFlushExample">
     <?php
     require_once "classes/qna.php";

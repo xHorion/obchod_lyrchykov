@@ -12,12 +12,10 @@
         <li><a href="product-details.php">Naše produkty</a></li>
         <li><a href="contact.php">Kontakt</a></li>
         <li><a href="QnA.php">QnA</a></li>
-        <li><a href="#">Prihlasiť sa</a></li>
+        <li><a href="login.php">Prihlasiť sa</a></li>
     </ul>
     <a class='menu-trigger'>
         <span>Menu</span>
     </a>
     <!-- ***** Menu End ***** -->
 </nav>
-
-
