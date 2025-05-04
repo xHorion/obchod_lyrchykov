@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,11 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->num_rows > 0) {
             $message = "❌ Користувач або email вже існує.";
         } else {
-            // Створення нового користувача
+            // Створення нового користувача з роллю "user"
             $stmt->close();
             $hashed = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $mysqli->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $username, $email, $hashed);
+            $role = 'user'; // Роль користувача за замовчуванням
+
+            $stmt = $mysqli->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $username, $email, $hashed, $role);
 
             if ($stmt->execute()) {
                 $message = "✅ Користувача успішно зареєстровано.";
@@ -75,29 +79,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div>
-<h2>Форма реєстрації</h2>
+    <h2>Форма реєстрації</h2>
 
-<?php if (!empty($message)): ?>
-    <p><strong><?= htmlspecialchars($message) ?></strong></p>
-<?php endif; ?>
+    <?php if (!empty($message)): ?>
+        <p><strong><?= htmlspecialchars($message) ?></strong></p>
+    <?php endif; ?>
 
-<form method="POST" action="">
-    <label>Логін:<br>
-        <input type="text" name="username" required>
-    </label><br><br>
+    <form method="POST" action="">
+        <label>Логін:<br>
+            <input type="text" name="username" required>
+        </label><br><br>
 
-    <label>Електронна пошта:<br>
-        <input type="email" name="email" required>
-    </label><br><br>
+        <label>Електронна пошта:<br>
+            <input type="email" name="email" required>
+        </label><br><br>
 
-    <label>Пароль:<br>
-        <input type="password" name="password" required>
-    </label><br><br>
+        <label>Пароль:<br>
+            <input type="password" name="password" required>
+        </label><br><br>
 
-    <button type="submit">Зареєструватись</button>
-</form>
+        <button type="submit">Зареєструватись</button>
+    </form>
 
-<p>Вже маєте акаунт? <a href="login.php">Увійти</a></p>
+    <p>Вже маєте акаунт? <a href="login.php">Увійти</a></p>
 </div>
 <?php include_once "parts/footer.php" ?>
 

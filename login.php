@@ -1,3 +1,44 @@
+<?php
+session_start();
+
+$mysqli = new mysqli("localhost", "root", "", "obchod");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if (empty($username) || empty($password)) {
+        $message = "❌ Усі поля обов’язкові.";
+    } else {
+        // Перевірка користувача в базі даних
+        $stmt = $mysqli->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($id, $dbUsername, $dbPassword, $role);
+
+        if ($stmt->num_rows === 1) {
+            $stmt->fetch();
+            if (password_verify($password, $dbPassword)) {
+                // Якщо пароль правильний, встановлюємо сесію
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $dbUsername;
+                $_SESSION['role'] = $role;
+
+                header("Location: thanks.php"); // Перенаправлення на сторінку після авторизації
+                exit;
+            } else {
+                $message = "❌ Невірний пароль.";
+            }
+        } else {
+            $message = "❌ Користувач не знайдений.";
+        }
+
+        $stmt->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,53 +74,6 @@
     </div>
 </div>
 
-<?php
-
-session_start();
-
-$mysqli = new mysqli("localhost", "root", "", "obchod");
-
-$message = "";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = trim($_POST['password'] ?? ''); // Видалення зайвих пробілів
-
-    if (empty($username) || empty($password)) {
-        $message = "❌ Усі поля обов'язкові.";
-    } else {
-        $stmt = $mysqli->prepare("SELECT id, password FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-
-        if ($stmt->execute()) {
-            $stmt->store_result();
-
-            if ($stmt->num_rows === 1) {
-                $stmt->bind_result($id, $hashedPassword);
-                $stmt->fetch();
-
-                // Логування для дебагу
-                error_log("Password entered: " . $password);
-                error_log("Hashed password from DB: " . $hashedPassword);
-
-                // Перевірка пароля
-                if (password_verify($password, $hashedPassword)) {
-                    $_SESSION['user_id'] = $id;
-                    $_SESSION['username'] = $username;
-                    $message = "✅ Авторизація успішна. Вітаємо, $username!";
-                } else {
-                    $message = "❌ Невірний пароль.";
-                }
-            } else {
-                $message = "❌ Користувача не знайдено.";
-            }
-        } else {
-            $message = "❌ Помилка запиту до бази даних.";
-        }
-        $stmt->close();
-    }
-}
-?>
 
 <div>
     <h2>Форма входу</h2>
