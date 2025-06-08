@@ -1,36 +1,57 @@
 <?php
-namespace database_class;
+namespace App;
 
-use PDO;
-use PDOException;
+use mysqli;
 
-class Database
+class User
 {
-    protected $pdo;
+    protected $mysqli;
+    protected $id;
+    protected $username;
+    protected $passwordHash;
+    protected $role;
 
-    public function __construct()
+    public function __construct(mysqli $mysqli)
     {
-        $host = 'localhost';
-        $db   = 'obchod';
-        $user = 'root';
-        $pass = '';
-        $charset = 'utf8mb4';
-
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ];
-
-        try {
-            $this->pdo = new PDO($dsn, $user, $pass, $options);
-        } catch (PDOException $e) {
-            die("Chyba pripojenia k databáze: " . $e->getMessage());
-        }
+        $this->mysqli = $mysqli;
     }
 
-    public function getConnection()
+    // Завантаження користувача за ім'ям користувача
+    public function loadByUsername(string $username): bool
     {
-        return $this->pdo;
+        $stmt = $this->mysqli->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->bind_result($id, $username, $passwordHash, $role);
+        if ($stmt->fetch()) {
+            $this->id = $id;
+            $this->username = $username;
+            $this->passwordHash = $passwordHash;
+            $this->role = $role;
+            $stmt->close();
+            return true;
+        }
+        $stmt->close();
+        return false;
+    }
+
+    public function verifyPassword(string $password): bool
+    {
+        return password_verify($password, $this->passwordHash);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
     }
 }

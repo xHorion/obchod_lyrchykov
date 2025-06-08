@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h3>Učet z arcanou na Pudge</h3>
-          <span class="breadcrumb"><a href="#">Domov</a>  >  <a href="#">Obchod</a>  >  Učet z arcanou na Pudge</span>
+          <span class="breadcrumb"><a href="index.php">Domov</a>  >  <a href="shop.php">Obchod</a>  >  Učet z arcanou na Pudge</span>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Manifold_Paradox_3.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Amaterasu.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Axe_Unleashed.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/Cosmetic_icon_Benevolent_Companion.webp" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/Cosmetic_icon_Benevolent_Companion.webp" alt=""></a>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
           <div class="item">
             <h4>Akcia</h4>
             <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/dota_item_tales_of_the_ardalan_interdictor_png.png" alt=""></a>
+              <a href="product-details.php"><img src="assets/images/dota_item_tales_of_the_ardalan_interdictor_png.png" alt=""></a>
             </div>
           </div>
         </div>

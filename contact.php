@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h3>Kontaktujte nas</h3>
-          <span class="breadcrumb"><a href="#">Domov</a>  >  Kontakt</span>
+          <span class="breadcrumb"><a href="index.php">Domov</a>  >  Kontakt</span>
         </div>
       </div>
     </div>
