@@ -8,7 +8,6 @@ class Auth
     public function __construct(\mysqli $mysqli) // <-- Додано \ перед mysqli
     {
         $this->mysqli = $mysqli;
-        session_start();
     }
 
     public function login(string $username, string $password): bool

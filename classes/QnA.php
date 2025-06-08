@@ -3,6 +3,7 @@ namespace qna_class;
 
 require_once "classes/database.php";
 
+use \PDO;
 use database_class\Database;
 
 class QnA {
@@ -28,12 +29,43 @@ class QnA {
     }
 
     public function update($id, $question, $answer) {
-        $query = "UPDATE otazky SET Otazka = :question, Odpoved = :answer WHERE id = :id";
+        // Отримуємо поточний запис
+        $querySelect = "SELECT Otazka, Odpoved FROM otazky WHERE id = :id";
+        $stmtSelect = $this->db->getConnection()->prepare($querySelect);
+        $stmtSelect->bindParam(':id', $id);
+        $stmtSelect->execute();
+        $current = $stmtSelect->fetch(PDO::FETCH_ASSOC);
+
+        if ($current) {
+            // Вставляємо в таблицю зміни обидва — старі і нові значення
+            $queryInsertLog = "INSERT INTO otazky_change_log 
+            (otazka_id, old_question, old_answer, new_question, new_answer) 
+            VALUES (:id, :oldQuestion, :oldAnswer, :newQuestion, :newAnswer)";
+            $stmtInsert = $this->db->getConnection()->prepare($queryInsertLog);
+            $stmtInsert->bindParam(':id', $id);
+            $stmtInsert->bindParam(':oldQuestion', $current['Otazka']);
+            $stmtInsert->bindParam(':oldAnswer', $current['Odpoved']);
+            $stmtInsert->bindParam(':newQuestion', $question);
+            $stmtInsert->bindParam(':newAnswer', $answer);
+            $stmtInsert->execute();
+        }
+
+        // Оновлюємо основний запис
+        $queryUpdate = "UPDATE otazky SET Otazka = :question, Odpoved = :answer WHERE id = :id";
+        $stmtUpdate = $this->db->getConnection()->prepare($queryUpdate);
+        $stmtUpdate->bindParam(':id', $id);
+        $stmtUpdate->bindParam(':question', $question);
+        $stmtUpdate->bindParam(':answer', $answer);
+
+        return $stmtUpdate->execute();
+    }
+
+    public function getChangeLog($id) {
+        $query = "SELECT * FROM otazky_change_log WHERE otazka_id = :id ORDER BY changed_at DESC";
         $stmt = $this->db->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':question', $question);
-        $stmt->bindParam(':answer', $answer);
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function delete($id) {

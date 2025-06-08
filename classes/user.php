@@ -54,4 +54,24 @@ class User
     {
         return $this->role;
     }
+
+    // Новий метод - отримати всіх користувачів (для списку)
+    public function getAllUsers(): array
+    {
+        $result = $this->mysqli->query("SELECT id, username, role FROM users");
+        if (!$result) {
+            return [];
+        }
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Новий метод - змінити роль користувача
+    public function setRole(int $userId, string $role): bool
+    {
+        $stmt = $this->mysqli->prepare("UPDATE users SET role = ? WHERE id = ?");
+        $stmt->bind_param("si", $role, $userId);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
 }
