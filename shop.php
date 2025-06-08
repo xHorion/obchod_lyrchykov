@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h3>Naš obchod</h3>
-          <span class="breadcrumb"><a href="#">Domov </a> > Naš obchod</span>
+          <span class="breadcrumb"><a href="index.php">Domov </a> > Naš obchod</span>
         </div>
       </div>
     </div>

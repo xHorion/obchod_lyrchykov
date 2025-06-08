@@ -1,40 +1,27 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/classes/User.php';
+require_once __DIR__ . '/classes/Auth.php';
+
 $mysqli = new mysqli("localhost", "root", "", "obchod");
+$auth = new \App\Auth($mysqli);
+
+$message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
     if (empty($username) || empty($password)) {
-        $message = "❌ Усі поля обов’язкові.";
+        $message = "❌ Všetky polia sú povinné.";
     } else {
-        // Перевірка користувача в базі даних
-        $stmt = $mysqli->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($id, $dbUsername, $dbPassword, $role);
-
-        if ($stmt->num_rows === 1) {
-            $stmt->fetch();
-            if (password_verify($password, $dbPassword)) {
-                // Якщо пароль правильний, встановлюємо сесію
-                $_SESSION['user_id'] = $id;
-                $_SESSION['username'] = $dbUsername;
-                $_SESSION['role'] = $role;
-
-                header("Location: thanks.php"); // Перенаправлення на сторінку після авторизації
-                exit;
-            } else {
-                $message = "❌ Невірний пароль.";
-            }
+        if ($auth->login($username, $password)) {
+            header("Location: thanks.php");
+            exit;
         } else {
-            $message = "❌ Користувач не знайдений.";
+            $message = "❌ Nesprávne meno alebo heslo.";
         }
-
-        $stmt->close();
     }
 }
 ?>
@@ -75,25 +62,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 
-<div>
-    <h2>Форма входу</h2>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+                <div class="card-body">
+                    <h4 class="text-center mb-4 fw-bold" style="color: #0069ff;">Prihlasovací formulár</h4>
 
-    <?php if (!empty($message)): ?>
-        <p><strong><?= htmlspecialchars($message) ?></strong></p>
-    <?php endif; ?>
+                    <?php if (!empty($message)): ?>
+                        <div class="alert alert-info text-center" role="alert">
+                            <?= htmlspecialchars($message) ?>
+                        </div>
+                    <?php endif; ?>
 
-    <form method="POST" action="">
-        <label>Логін:<br>
-            <input type="text" name="username" required>
-        </label><br><br>
+                    <form method="POST" action="">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Login</label>
+                            <input type="text" name="username" id="username" class="form-control rounded-3" required>
+                        </div>
 
-        <label>Пароль:<br>
-            <input type="password" name="password" required>
-        </label><br><br>
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Heslo</label>
+                            <input type="password" name="password" id="password" class="form-control rounded-3" required>
+                        </div>
 
-        <button type="submit">Увійти</button>
-    </form>
-    <p>Ще не маєте акаунт? <a href="register.php">Зареєструватись</a></p>
+                        <div class="d-grid">
+                            <button type="submit" class="btn" style="background-color: #0069ff; color: white; border-radius: 8px;">Prihlásiť sa</button>
+                        </div>
+                    </form>
+
+                    <p class="mt-4 text-center">
+                        Ešte nemáte účet?
+                        <a href="register.php" class="text-decoration-none" style="color: #00bcd4;">Registrácia</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php include_once "parts/footer.php" ?>
